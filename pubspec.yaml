@@ -1,0 +1,14 @@
+name: animated_sliced_button
+description: Animated Sliced Button Widget 
+version: 1.0.1
+author: Emre Utku Uyguç <emreuyguc@gmail.com>
+homepage: https://github.com/emreuyguc/Flutter_animated_sliced_button
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  clippy_flutter: ^1.1.1
