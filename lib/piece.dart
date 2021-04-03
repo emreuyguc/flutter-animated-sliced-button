@@ -4,31 +4,25 @@ import 'package:flutter/material.dart';
 
 class Piece extends StatelessWidget {
   final Color backgroundColor;
-
   final String char;
   final TextStyle charStyle;
-
   final double width;
   final double height;
-
   final double clipHeight;
-
   final dynamic shape;
-
   Widget renderWidget;
-
   final int index;
-
+  final Radius borderRadius;
   Piece(
       {this.shape,
-        this.width,
-        this.height,
-        this.char,
-        this.charStyle,
-        this.backgroundColor,
-        this.clipHeight,
-        this.index}) {
-
+      this.width,
+      this.height,
+      this.char,
+      this.charStyle,
+      this.backgroundColor,
+      this.clipHeight,
+      this.index, this.borderRadius,
+      }) {
     final Widget shapeContainer = Container(
       decoration: BoxDecoration(
         color: this.backgroundColor,
@@ -43,11 +37,18 @@ class Piece extends StatelessWidget {
     );
 
     if (this.shape.runtimeType == DIAGONAL) {
-      this.renderWidget = Diagonal(
-        axis: Axis.vertical,
-        clipHeight: this.clipHeight,
-        position: (this.shape as DIAGONAL).EDGE,
-        child: shapeContainer,
+      this.renderWidget = ClipRRect(
+        borderRadius: BorderRadius.only(
+            topLeft: this.shape == DIAGONAL.TOP_RIGHT || this.shape == DIAGONAL.BOTTOM_RIGHT ? this.borderRadius ?? Radius.circular(0) : Radius.circular(0),
+            bottomLeft: this.shape == DIAGONAL.TOP_RIGHT || this.shape == DIAGONAL.BOTTOM_RIGHT ? this.borderRadius ?? Radius.circular(0) : Radius.circular(0),
+            bottomRight: this.shape == DIAGONAL.TOP_LEFT || this.shape == DIAGONAL.BOTTOM_LEFT ? this.borderRadius ?? Radius.circular(0):Radius.circular(0),
+            topRight: this.shape == DIAGONAL.TOP_LEFT || this.shape == DIAGONAL.BOTTOM_LEFT ? this.borderRadius ?? Radius.circular(0):Radius.circular(0)),
+        child: Diagonal(
+          axis: Axis.vertical,
+          clipHeight: this.clipHeight,
+          position: (this.shape as DIAGONAL).EDGE,
+          child: shapeContainer,
+        ),
       );
     } else {
       SHAPE_WIDGET _shapeBody = (this.shape as SHAPE_BODY).WIDGET;

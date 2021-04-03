@@ -1,4 +1,5 @@
 import 'package:animated_sliced_button/animated_sliced_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,7 +28,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   @override
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,45 +46,40 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.black,
               width: 300,
               height: 100,
-              child: Text("E.U.U",style: TextStyle(color: Colors.amber,fontSize: 40),),
+              child: Text(
+                "E.U.U",
+                style: TextStyle(color: Colors.amber, fontSize: 40),
+              ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             SlicedButton(
+              borderRadius: Radius.circular(10),
               width: 300,
               height: 100,
-              text: "NEW",
-
-              onTap: (){
-              },
-            ),
-            SizedBox(height: 20,),
-            SlicedButton(
-              width: 300,
-              height: 100,
-
-              crashDuration:Duration(milliseconds: 150),
-              crashDistance: 15,
-
-              textStyle: TextStyle(color: Colors.cyanAccent,fontSize: 30),
+              crashDuration: Duration(milliseconds: 150),
+              crashDistance: 20,
+              textStyle: TextStyle(color: Colors.cyanAccent, fontSize: 30),
               text: "SLICED",
-
               backgroundColor: Colors.black87,
-              onTap: (){
+              onTap: () {
+                print("bum");
               },
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             SlicedButton(
+              borderRadius: Radius.circular(10),
               width: 300,
               height: 100,
-
-              crashDuration:Duration(milliseconds: 150),
-              crashDistance: 15,
-
-              textStyle: TextStyle(color: Colors.cyanAccent,fontSize: 30),
+              crashDuration: Duration(milliseconds: 150),
+              crashDistance: 20,
+              textStyle: TextStyle(color: Colors.cyanAccent, fontSize: 30),
               text: "WIDGET",
-
               backgroundColor: Colors.black87,
-              onTap: (){
+              onTap: () {
                 print("bum");
               },
             ),
