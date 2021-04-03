@@ -14,7 +14,7 @@ class SlicedButton extends StatefulWidget {
   final Duration crashDuration;
   final VoidCallback onTap;
   final VoidCallback onEnd;
-final Radius borderRadius;
+  final Radius borderRadius;
 
   SlicedButton(
       {@required this.width,
@@ -25,7 +25,8 @@ final Radius borderRadius;
       this.crashDuration,
       this.textStyle,
       @required this.onTap,
-      this.onEnd, this.borderRadius});
+      this.onEnd,
+      this.borderRadius});
 
   @override
   _SlicedButtonState createState() => _SlicedButtonState();
@@ -39,7 +40,10 @@ class _SlicedButtonState extends State<SlicedButton> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _buildButtonShapes();
+  }
 
+  void _buildButtonShapes() {
     SHAPE_BODY _choosedNext;
     DIAGONAL _starter;
     dynamic _choosed;
@@ -66,6 +70,10 @@ class _SlicedButtonState extends State<SlicedButton> {
 
   @override
   Widget build(BuildContext context) {
+    if (_buttonShapes.length != widget.text.length) {
+      _buildButtonShapes();
+    }
+
     return GestureDetector(
         onTap: () {
           setState(() {
@@ -115,7 +123,7 @@ class _SlicedButtonState extends State<SlicedButton> {
                     : 0,
                 //transform: Matrix4.translationValues(this.animate == true ? -(widget.crashDistance*widget.text.length*0.35) : -(index * widget.crashDistance), this.animate == true ? (index % 2 == 0 ? 20 : -20) : 0, 0),
                 child: Piece(
-                  borderRadius: widget.borderRadius,
+                    borderRadius: widget.borderRadius,
                     index: index,
                     height: widget.height,
                     width: ((widget.width +
