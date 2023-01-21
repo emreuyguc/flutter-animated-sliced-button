@@ -1,3 +1,6 @@
+## [1.2.0] - Release 22.01.2023
+    -fix stack overflow parameter
+
 ## [1.1.1] - Release 03.04.2021
     -fix hotreload text length bug
 

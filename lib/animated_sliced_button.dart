@@ -95,8 +95,7 @@ class _SlicedButtonState extends State<SlicedButton> {
               0,
               0),
           child: Stack(
-            clipBehavior: Clip.antiAlias,
-            overflow: Overflow.visible,
+            clipBehavior: Clip.none,
             children: List<Widget>.generate(this._buttonShapes.length, (index) {
               return AnimatedPositioned(
                 onEnd: () {

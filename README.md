@@ -9,8 +9,11 @@ New Animated Sliced Button Widget.
 It is very primitive now, but I will work for asymmetrical fragmentation and dispersion in different ways as soon as possible.
 
 ## Updates
+v1.2:
+    -fix stack overflow parameter
+
 v1.1 :  
--fix setState wrong shape choose.  
+    -fix setState wrong shape choose.  
     -add borderRadius  
     -change widget pieces build moved to initState method
 
