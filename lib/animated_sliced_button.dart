@@ -6,25 +6,25 @@ import 'package:flutter/material.dart';
 
 class SlicedButton extends StatefulWidget {
   final String text;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
   final Color backgroundColor;
   final double width;
   final double height;
   final double crashDistance;
-  final Duration crashDuration;
+  final Duration? crashDuration;
   final VoidCallback onTap;
-  final VoidCallback onEnd;
-  final Radius borderRadius;
+  final VoidCallback? onEnd;
+  final Radius? borderRadius;
 
   SlicedButton(
-      {@required this.width,
-      @required this.height,
-      @required this.text,
+      {required this.width,
+      required this.height,
+      required this.text,
       this.backgroundColor = Colors.black87,
       this.crashDistance = 14,
       this.crashDuration,
       this.textStyle,
-      @required this.onTap,
+      required this.onTap,
       this.onEnd,
       this.borderRadius});
 
@@ -34,7 +34,7 @@ class SlicedButton extends StatefulWidget {
 
 class _SlicedButtonState extends State<SlicedButton> {
   bool animate = false;
-  List<dynamic> _buttonShapes;
+  late List<dynamic> _buttonShapes;
 
   @override
   void initState() {
@@ -44,23 +44,23 @@ class _SlicedButtonState extends State<SlicedButton> {
   }
 
   void _buildButtonShapes() {
-    SHAPE_BODY _choosedNext;
-    DIAGONAL _starter;
+    SHAPE_BODY? _choosedNext;
+    DIAGONAL? _starter;
     dynamic _choosed;
 
     _buttonShapes = List<dynamic>.generate(widget.text.length, (charIndex) {
       if (charIndex == 0) {
-        _starter = (PIECE_TYPE.START.SHAPES..shuffle()).first;
+        _starter = (PIECE_TYPE.START.SHAPES!..shuffle()).first;
         _choosed = _starter;
       } else if (charIndex == 1) {
-        _choosedNext = (_starter.NEXT..shuffle()).first;
+        _choosedNext = (_starter!.NEXT!..shuffle()).first;
         _choosed = _choosedNext;
       } else if (charIndex == widget.text.length - 1) {
-        DIAGONAL _end = _choosedNext.END;
+        DIAGONAL? _end = _choosedNext!.END;
         _choosed = _end;
       } else {
-        List<SHAPE_BODY> _body = _choosedNext.NEXT;
-        _choosedNext = (_body..shuffle()).first;
+        List<SHAPE_BODY>? _body = _choosedNext!.NEXT;
+        _choosedNext = (_body!..shuffle()).first;
         _choosed = _choosedNext;
       }
 
@@ -84,7 +84,7 @@ class _SlicedButtonState extends State<SlicedButton> {
         child: AnimatedContainer(
           duration: widget.crashDuration == null
               ? Duration(milliseconds: 150)
-              : widget.crashDuration,
+              : widget.crashDuration!,
           curve: Curves.easeOutBack,
           height: widget.height,
           width: widget.width,

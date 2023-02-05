@@ -1,3 +1,6 @@
+## [2.0.0-nullsafety] - Release 05.02.2023
+    -nullsafety
+
 ## [1.2.0] - Release 22.01.2023
     -fix stack overflow parameter
 

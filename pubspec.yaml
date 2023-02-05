@@ -1,13 +1,13 @@
 name: animated_sliced_button
-description: Animated Sliced Button Widget 
-version: 1.2.0
+description: It is very primitive now, but I will work for asymmetrical fragmentation and dispersion in different ways as soon as possible.
+version: 2.0.0-nullsafety
 homepage: https://github.com/emreuyguc/Flutter_animated_sliced_button
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.13.0 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  clippy_flutter: ^1.1.1
+  clippy_flutter: ^2.0.0-nullsafety.1

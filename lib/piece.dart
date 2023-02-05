@@ -3,16 +3,16 @@ import 'package:clippy_flutter/clippy_flutter.dart';
 import 'package:flutter/material.dart';
 
 class Piece extends StatelessWidget {
-  final Color backgroundColor;
-  final String char;
-  final TextStyle charStyle;
-  final double width;
-  final double height;
-  final double clipHeight;
+  final Color? backgroundColor;
+  final String? char;
+  final TextStyle? charStyle;
+  final double? width;
+  final double? height;
+  final double? clipHeight;
   final dynamic shape;
-  Widget renderWidget;
-  final int index;
-  final Radius borderRadius;
+  late Widget renderWidget;
+  final int? index;
+  final Radius? borderRadius;
   Piece(
       {this.shape,
       this.width,
@@ -31,7 +31,7 @@ class Piece extends StatelessWidget {
       width: this.width,
       height: this.height,
       child: Text(
-        this.char,
+        this.char!,
         style: this.charStyle,
       ),
     );
@@ -45,24 +45,24 @@ class Piece extends StatelessWidget {
             topRight: this.shape == DIAGONAL.TOP_LEFT || this.shape == DIAGONAL.BOTTOM_LEFT ? this.borderRadius ?? Radius.circular(0):Radius.circular(0)),
         child: Diagonal(
           axis: Axis.vertical,
-          clipHeight: this.clipHeight,
-          position: (this.shape as DIAGONAL).EDGE,
+          clipHeight: this.clipHeight!,
+          position: (this.shape as DIAGONAL).EDGE!,
           child: shapeContainer,
         ),
       );
     } else {
-      SHAPE_WIDGET _shapeBody = (this.shape as SHAPE_BODY).WIDGET;
+      SHAPE_WIDGET _shapeBody = (this.shape as SHAPE_BODY).WIDGET!;
       if (_shapeBody == SHAPE_WIDGET.PARALLEL) {
         this.renderWidget = Parallelogram(
-          cutLength: this.clipHeight,
-          edge: (this.shape as SHAPE_BODY).EDGE,
+          cutLength: this.clipHeight!,
+          edge: (this.shape as SHAPE_BODY).EDGE!,
           child: shapeContainer,
         );
       }
       if (_shapeBody == SHAPE_WIDGET.TRIPAZOID) {
         this.renderWidget = Trapezoid(
-          cutLength: this.clipHeight,
-          edge: (this.shape as SHAPE_BODY).EDGE,
+          cutLength: this.clipHeight!,
+          edge: (this.shape as SHAPE_BODY).EDGE!,
           child: shapeContainer,
         );
       }
